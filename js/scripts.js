@@ -1,4 +1,4 @@
-$(document).ready(function(){
+jQuery(document).ready(function($){
 
 	"use strict";
 	
@@ -370,137 +370,141 @@ $(document).ready(function(){
 
 });
 
-$(window).load(function(){
+(function($){
 
-  "use strict";
-  	
-  
-	// Align Elements Vertically
-	
-	alignVertical();
-	alignBottom();
-	
-	$(window).resize(function(){
-		alignVertical();
-		alignBottom();
-	});
-	
-	// Isotope Projects
-	
-	$('.projects-container').isotope({
-	  itemSelector: '.project',
-	  layoutMode: 'fitRows'
-	});
-	
-	$('.filters li').click(function() {
-	  var current = $(this);
+	$(window).load(function(){
+
+		"use strict";
+			
+		
+		  // Align Elements Vertically
+		  
+		  alignVertical();
+		  alignBottom();
+		  
+		  $(window).resize(function(){
+			  alignVertical();
+			  alignBottom();
+		  });
+		  
+		  // Isotope Projects
+		  
+		  $('.projects-container').isotope({
+			itemSelector: '.project',
+			layoutMode: 'fitRows'
+		  });
+		  
+		  $('.filters li').click(function() {
+			var current = $(this);
+			
+			current.siblings('li').removeClass('active');
+			current.addClass('active');
+			
+			var filterValue = current.attr('data-filter');
+			var container = current.closest('.projects-wrapper').find('.projects-container');
+			container.isotope({ filter: filterValue });
+		  });
+		  
+		  // Isotope contained feature boxes
+		  
+		  $('.contained-features-wrapper').isotope({
+			itemSelector: '.no-pad',
+			layoutMode: 'masonry',
+			masonry: {
+				gutter: 0
+			  }
+		  });
+		  
+		  // Instagram Feed
+		  
+		  if($('.instafeed').length){
+			  jQuery.fn.spectragram.accessData = {
+				  accessToken: '1406933036.fedaafa.feec3d50f5194ce5b705a1f11a107e0b',
+				  clientID: 'fedaafacf224447e8aef74872d3820a1'
+			  };
 	  
-	  current.siblings('li').removeClass('active');
-	  current.addClass('active');
+			  $('.instafeed').each(function () {
+				  $(this).children('ul').spectragram('getUserFeed', {
+					  query: $(this).attr('data-user-name')
+				  });
 	  
-	  var filterValue = current.attr('data-filter');
-	  var container = current.closest('.projects-wrapper').find('.projects-container');
-	  container.isotope({ filter: filterValue });
-	});
-	
-	// Isotope contained feature boxes
-	
-	$('.contained-features-wrapper').isotope({
-	  itemSelector: '.no-pad',
-	  layoutMode: 'masonry',
-	  masonry: {
-		  gutter: 0
-		}
-	});
-	
-	// Instagram Feed
-	
-	if($('.instafeed').length){
-		jQuery.fn.spectragram.accessData = {
-			accessToken: '1406933036.fedaafa.feec3d50f5194ce5b705a1f11a107e0b',
-			clientID: 'fedaafacf224447e8aef74872d3820a1'
-		};
-
-		$('.instafeed').each(function () {
-			$(this).children('ul').spectragram('getUserFeed', {
-				query: $(this).attr('data-user-name')
-			});
-
-		});
-		
-	}
-	
-    if($('#tweets').length){
-    	$('#tweets').flexslider({ directionNav: false, controlNav: false });
-    }
-    
-    // Remove Loader
-    
-    $('.loader').css('opacity', 0);
-    setTimeout(function(){$('.loader').hide();}, 600);
-    
-	// Mailchimp/Campaign Monitor Mail List Form Scripts
-	$('form.mail-list-signup').on('submit', function(){
-		
-		var iFrame = $(this).closest('section, header').find('iframe.mail-list-form'),
-		thisForm 		= $(this).closest('.mail-list-signup'),
-		userEmail 		= $(this).find('.signup-email-field').val(),
-		userFullName 	= $(this).find('.signup-name-field').val(),
-		userFirstName 	= $(this).find('.signup-first-name-field').val(),
-		userLastName 	= $(this).find('.signup-last-name-field').val(),
-		error			= 0;
-		
-		$(thisForm).find('.validate-required').each(function(){
-			if($(this).val() === ''){
-				$(this).addClass('field-error');
-				error = 1;
-			}
-			else{
-				$(this).removeClass('field-error');
-			}
-		});
-		
-		$(thisForm).find('.validate-email').each(function(){
-			if(!(/(.+)@(.+){2,}\.(.+){2,}/.test($(this).val()))){
-				$(this).addClass('field-error');
-				error = 1;
-			}
-			else{
-				$(this).removeClass('field-error');
-			}
-		});
-		
-		if(error === 0){
-			iFrame.contents().find('#mce-EMAIL, #fieldEmail').val(userEmail);
-			iFrame.contents().find('#mce-LNAME, #fieldLastName').val(userLastName);
-			iFrame.contents().find('#mce-FNAME, #fieldFirstName').val(userFirstName);
-			iFrame.contents().find('#mce-FNAME, #fieldName').val(userFullName);		
-			iFrame.contents().find('form').attr('target', '_blank').submit();
-		}
-		return false;
-	});
-	
-	// Blog Masonry
-	
-	$('.blog-masonry-container').isotope({
-	  itemSelector: '.blog-masonry-item',
-	  layoutMode: 'masonry'
-	});
-	
-	$('.blog-filters li').click(function() {
-	  var current = $(this);
+			  });
+			  
+		  }
+		  
+		  if($('#tweets').length){
+			  $('#tweets').flexslider({ directionNav: false, controlNav: false });
+		  }
+		  
+		  // Remove Loader
+		  
+		  $('.loader').css('opacity', 0);
+		  setTimeout(function(){$('.loader').hide();}, 600);
+		  
+		  // Mailchimp/Campaign Monitor Mail List Form Scripts
+		  $('form.mail-list-signup').on('submit', function(){
+			  
+			  var iFrame = $(this).closest('section, header').find('iframe.mail-list-form'),
+			  thisForm 		= $(this).closest('.mail-list-signup'),
+			  userEmail 		= $(this).find('.signup-email-field').val(),
+			  userFullName 	= $(this).find('.signup-name-field').val(),
+			  userFirstName 	= $(this).find('.signup-first-name-field').val(),
+			  userLastName 	= $(this).find('.signup-last-name-field').val(),
+			  error			= 0;
+			  
+			  $(thisForm).find('.validate-required').each(function(){
+				  if($(this).val() === ''){
+					  $(this).addClass('field-error');
+					  error = 1;
+				  }
+				  else{
+					  $(this).removeClass('field-error');
+				  }
+			  });
+			  
+			  $(thisForm).find('.validate-email').each(function(){
+				  if(!(/(.+)@(.+){2,}\.(.+){2,}/.test($(this).val()))){
+					  $(this).addClass('field-error');
+					  error = 1;
+				  }
+				  else{
+					  $(this).removeClass('field-error');
+				  }
+			  });
+			  
+			  if(error === 0){
+				  iFrame.contents().find('#mce-EMAIL, #fieldEmail').val(userEmail);
+				  iFrame.contents().find('#mce-LNAME, #fieldLastName').val(userLastName);
+				  iFrame.contents().find('#mce-FNAME, #fieldFirstName').val(userFirstName);
+				  iFrame.contents().find('#mce-FNAME, #fieldName').val(userFullName);		
+				  iFrame.contents().find('form').attr('target', '_blank').submit();
+			  }
+			  return false;
+		  });
+		  
+		  // Blog Masonry
+		  
+		  $('.blog-masonry-container').isotope({
+			itemSelector: '.blog-masonry-item',
+			layoutMode: 'masonry'
+		  });
+		  
+		  $('.blog-filters li').click(function() {
+			var current = $(this);
+			
+			current.siblings('li').removeClass('active');
+			current.addClass('active');
+			
+			var filterValue = current.attr('data-filter');
+			var container = current.closest('.blog-masonry').find('.blog-masonry-container');
+			container.isotope({ filter: filterValue });
+		  });
 	  
-	  current.siblings('li').removeClass('active');
-	  current.addClass('active');
 	  
-	  var filterValue = current.attr('data-filter');
-	  var container = current.closest('.blog-masonry').find('.blog-masonry-container');
-	  container.isotope({ filter: filterValue });
-	});
+	  
+	  });
+})(jQuery)
 
-
-
-});
 
 function handleTweets(tweets){
           var x = tweets.length;
@@ -517,8 +521,8 @@ function handleTweets(tweets){
 
 function alignVertical(){
 
-		$('.align-vertical').each(function(){
-			var that = $(this);
+		jQuery('.align-vertical').each(function(){
+			var that = jQuery(this);
 			var height = that.height();
 			var parentHeight = that.parent().height();
 			var padAmount = (parentHeight / 2) - (height/2);
@@ -528,7 +532,7 @@ function alignVertical(){
 }
 
 function alignBottom(){
-	$('.align-bottom').each(function(){
+	jQuery('.align-bottom').each(function(){
 		var that = $(this);
 		var height = that.height();
 		var parentHeight = that.parent().height();
@@ -540,10 +544,10 @@ function alignBottom(){
 // Youtube Background Handling
 
 function onYouTubeIframeAPIReady() {
-	$(window).load(function(){
-		$('.youtube-bg-iframe').each(function(index){
-			$(this).attr('id', 'yt-'+index);
-			var player = new YT.Player($(this).attr('id'), {
+	jQuery(window).load(function(){
+		jQuery('.youtube-bg-iframe').each(function(index){
+			jQuery(this).attr('id', 'yt-'+index);
+			var player = new YT.Player(jQuery(this).attr('id'), {
 				events: {
 				'onReady': function(){
 					player.mute();
