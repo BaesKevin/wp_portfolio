@@ -16,7 +16,7 @@
 					<div class="row nav-menu">
 						<div class="col-md-3 col-sm-3 columns">
 							<a href="index.html">
-							<img class="logo logo-dark" alt="Logo" src="img/logotype_dark.png">
+							<img class="logo logo-dark" alt="Logo" src="<?php echo get_template_directory_uri()?>/img/logotype_dark.png">
 						</div>
 					
 						<div class="col-md-9 col-sm-9 columns text-right">
@@ -44,7 +44,7 @@
 		<div class="main-container">
 			<header class="header-icons overlay">
 					<div class="background-image-holder parallax-background">
-						<img class="background-image" alt="Background Image" src="img/header_image.jpg">
+						<img class="background-image" alt="Background Image" src="<?php echo get_template_directory_uri()?>/img/header_image.jpg">
 					</div>
 					
 					<div class="container">
@@ -183,7 +183,7 @@
 					
 						<div class="col-md-6 col-sm-12 no-pad project development image-holder">
 							<div class="background-image-holder">
-								<img class="background-image" alt="Background Image" src="img/project_1.jpg">
+								<img class="background-image" alt="Background Image" src="<?php echo get_template_directory_uri()?>/img/project_1.jpg">
 							</div>
 							<div class="hover-state">
 								<div class="align-vertical">
@@ -196,7 +196,7 @@
 						
 						<div class="col-md-6 col-sm-12 no-pad project development image-holder">
 							<div class="background-image-holder">
-								<img class="background-image" alt="Background Image" src="img/project_2.jpg">
+								<img class="background-image" alt="Background Image" src="<?php echo get_template_directory_uri()?>/img/project_2.jpg">
 							</div>
 							<div class="hover-state">
 								<div class="align-vertical">
@@ -209,7 +209,7 @@
 						
 						<div class="col-md-4 col-sm-6 no-pad project print image-holder">
 							<div class="background-image-holder">
-								<img class="background-image" alt="Background Image" src="img/project_3.jpg">
+								<img class="background-image" alt="Background Image" src="<?php echo get_template_directory_uri()?>/img/project_3.jpg">
 							</div>
 							<div class="hover-state">
 								<div class="align-vertical">
@@ -222,7 +222,7 @@
 						
 						<div class="col-md-4 col-sm-6 no-pad project branding image-holder">
 							<div class="background-image-holder">
-								<img class="background-image" alt="Background Image" src="img/project_4.jpg">
+								<img class="background-image" alt="Background Image" src="<?php echo get_template_directory_uri()?>/img/project_4.jpg">
 							</div>
 							<div class="hover-state">
 								<div class="align-vertical">
@@ -235,7 +235,7 @@
 						
 						<div class="col-md-4 col-sm-6 no-pad project print image-holder">
 							<div class="background-image-holder">
-								<img class="background-image" alt="Background Image" src="img/project_5.jpg">
+								<img class="background-image" alt="Background Image" src="<?php echo get_template_directory_uri()?>/img/project_5.jpg">
 							</div>
 							<div class="hover-state">
 								<div class="align-vertical">
