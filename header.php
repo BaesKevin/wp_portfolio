@@ -15,3 +15,46 @@
 
         <?php wp_head(); ?>
     </head>
+
+    <body>
+    	<div class="loader">
+    		<div class="spinner">
+			  <div class="double-bounce1"></div>
+			  <div class="double-bounce2"></div>
+			</div>
+    	</div>
+				
+		<div class="nav-container">
+			<nav class="simple-bar top-bar">
+				<div class="container">
+				
+				
+					<div class="row nav-menu">
+						<div class="col-md-3 col-sm-3 columns">
+							<a href="index.html">
+							<img class="logo logo-dark" alt="Logo" src="<?php echo get_template_directory_uri()?>/img/logotype_dark.png">
+						</div>
+					
+						<div class="col-md-9 col-sm-9 columns text-right">
+							<!-- <ul class="menu">
+								<a></a>
+								<li><a href="/" target="_self">Home</a></li>
+								<li><a href="about.html" target="_self">About me</a></li>
+								<li><a href="portfolio.html" target="_self">portfolio</a></li>
+								<li><a href="/blog" target="_self">Blog</a></li>
+								<li><a href="contact.html" target="_self">Contact</a></li>
+							</ul> -->
+							<a></a> <!-- hack by the developer so all the links line up, first link shifts down 2 cm when this is not here-->
+							<?php wp_nav_menu( array( 'theme_location' => 'primary-menu' ) ); ?>
+							
+						</div>
+					</div>
+					
+					<div class="mobile-toggle">
+						<i class="icon icon_menu"></i>
+					</div>
+					
+				</div>
+			</nav>
+		
+		</div>

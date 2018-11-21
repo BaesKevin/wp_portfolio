@@ -30,3 +30,14 @@ function wpdocs_theme_name_scripts() {
     wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array(), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'wpdocs_theme_name_scripts' );
+
+function register_menus(){
+    register_nav_menus(
+        array(
+        'primary-menu' => __( 'Primary Menu' ),
+        /*'footer-menu' => __( 'Footer Menu' )*/
+        )
+    );
+}
+
+add_action('init', 'register_menus');
