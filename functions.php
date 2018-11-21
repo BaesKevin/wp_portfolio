@@ -41,3 +41,23 @@ function register_menus(){
 }
 
 add_action('init', 'register_menus');
+
+// register the post type that displays experience entries on the front page
+function jobexperience_init(){
+    $labels = array(
+    	'name' => __('Job experiences'),
+    	'singular_name' => __('Job experience'),
+    	'add_new_item' => __('Add new job experience')
+    );
+    $args = array(
+    	'labels' => $labels,
+    	'description' => 'Holds all your previence job experience',
+    	'public' => true,
+    	'has_archive' => true,
+    	'supports' => array('title', 'thumbnail')
+    );
+    
+    register_post_type('jobexperience', $args);
+}
+
+add_action('init', 'jobexperience_init');
