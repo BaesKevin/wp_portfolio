@@ -44,7 +44,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-12 text-center">
-							<h1>Blog posts</h1>
+							<h1>Page-blog page</h1>
 						</div>
 					</div>
 					
