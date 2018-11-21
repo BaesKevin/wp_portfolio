@@ -224,9 +224,35 @@
 						</div>
 					</div>
 					
+
 					<div class="row">
 						<div class="col-sm-12">
-							<div class="timeline-event">
+							<?php
+								$args = array( 'post_type' => 'jobexperience' );
+								$loop = new WP_Query( $args );
+								while ( $loop->have_posts() ) : $loop->the_post();
+									global $post;
+									$custom = get_post_custom($post->ID);
+									?>
+										<div class="timeline-event">
+											<div class="col-sm-6 col-md-push-6">
+												<h2><?php the_title() ?></h2>
+												<h5><?php echo $custom['job_time'][0] ?><br></h5>
+											</div>
+											
+											<div class="middle">
+												<i class="icon icon-map"></i>
+												<div class="vertical-line"></div>
+											</div>
+											
+											<div class="col-sm-6 col-md-pull-6">
+												<p><?php echo $custom['job_description'][0] ?>  &nbsp;</p>
+											</div>
+										</div>
+									<?php
+								endwhile;
+							?>
+							<!-- <div class="timeline-event">
 								<div class="col-sm-6 col-md-push-6">
 									<h2>2005-2009</h2>
 									<h5>Junior Designer at Black Rock Interactive Agency<br></h5>
@@ -299,7 +325,7 @@
 									
 								</div>
 							</div>
-							
+							 -->
 						</div>
 					</div>
 					
