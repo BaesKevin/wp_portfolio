@@ -42,6 +42,10 @@ function register_menus(){
 
 add_action('init', 'register_menus');
 
+/*****************************************
+JOBEXPERIENCE CUSTOM POST TYPE
+******************************************/
+
 // register the post type that displays experience entries on the front page
 function jobexperience_init(){
     $labels = array(
@@ -60,4 +64,59 @@ function jobexperience_init(){
     register_post_type('jobexperience', $args);
 }
 
+function jobexperience_admin_init(){
+    // add a box to add custom fields to
+    add_meta_box(
+    	'jobexperience_details', //id
+        'Jobexperience Details', //title
+        'jobexperience_callback', //callback function
+        'jobexperience', // 'post type' to add the metabox to 
+        'normal', //'context'
+        'high' //priority
+    );
+
+    // define custom fields for metabox
+    function jobexperience_callback(){
+        global $post; //pull in the global post variable
+        $custom = get_post_custom($post->ID);
+        $job_time = '';
+        $job_description = '';
+
+        if(isset($custom['job_time'])){
+            $job_time = $custom['job_time'][0];
+        }
+        if(isset($custom['job_description'])){
+            $job_description = $custom['job_description'][0];
+        }
+        
+        // echo html for this custom metabox, wordpresss makes a form around this
+        ?>
+         Please enter some details about your job experience.
+        
+        <div>
+            <label>Time range for the job (e.g. "2005-2009", "september through november 2014":</label>
+            <input type="text" name="job_time" value="<?php echo $job_time; ?>"/>  
+            <br />
+            <label>Job description (e.g. java developer):</label>
+            <input type="text" name="job_description" value="<?php echo $job_description; ?>"/>  
+        </div>
+            
+        <?php
+            
+        
+    }
+}
+
+function jobexperience_save_data(){
+    global $post; 
+
+    if(isset($post)){
+        update_post_meta($post->ID, 'job_time', $_POST['job_time']);
+        update_post_meta($post->ID, 'job_description', $_POST['job_description']);
+    }
+   
+}
+
 add_action('init', 'jobexperience_init');
+add_action('admin_init', 'jobexperience_admin_init');
+add_action('save_post', 'jobexperience_save_data');
