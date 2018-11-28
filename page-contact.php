@@ -14,9 +14,23 @@
 								<div class="align-vertical">
 									<img alt="Logo" src="img/logotype_dark.png">
 									<p class="lead">
-										hello@johnsmith.com<br>
-										+70 423 942 012</p>
-									<p>200 Avenue Street,<br>New York</p>
+										<?php the_field('email'); ?><br>
+										<?php if(get_field('telephone')):
+											the_field('telephone');
+										endif;
+										?>
+									</p>
+									<p><?php if(get_field('street_and_number')):
+											the_field('street_and_number');
+											echo ',';
+										endif;
+										?>
+									<br>
+									<?php if(get_field('city')):
+											the_field('city');
+										endif;
+										?>
+									</p>
 								</div>
 							</div>
 						</div>

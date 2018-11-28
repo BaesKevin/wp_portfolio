@@ -6,9 +6,9 @@
                 <div class="row">
                     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 text-center">
                         
-                        <h1><strong>A little information about me</strong></h1>
+                        <h1><strong><?php the_field('header_title'); ?></strong></h1>
                         <p class="lead">
-                            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+                            <?php the_field('short_about_me'); ?>
                         </p>
                     </div>
                 </div>
@@ -20,10 +20,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 align-vertical no-align-mobile">
-                        <h1>Why am I doing this?</h1>
-                        <h6>Because I love beautiful things</h6>
+                        <h1><?php the_field('middle_title'); ?></h1>
+                        <h6><?php the_field('middle_subtitle'); ?></h6>
                         <p class="lead">
-                            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi,.
+                        <?php the_field('middle_content'); ?>
                         </p>
                     </div>
                     
