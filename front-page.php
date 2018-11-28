@@ -241,7 +241,7 @@
 											</div>
 											
 											<div class="middle">
-												<i class="icon icon-map"></i>
+												<i class="icon icon-map"></i> <!-- figure a CMS'y way to put the icon in here -->
 												<div class="vertical-line"></div>
 											</div>
 											
