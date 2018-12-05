@@ -3,7 +3,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 text-center">
-                        <span class="text-white">© 2014 John Smith - All Rights Reserved. Free Website Template Designed by <a href=http://www.themezy.com>Themezy</a>.</span>
+                        <?php dynamic_sidebar( 'footer-information' ); ?>
                         <br>
                         <br>
                         <i class="icon text-white icon_mail"></i>

@@ -221,3 +221,12 @@ $args = array(
 	'default-image' => get_template_directory_uri() . '/img/logotype_dark.png',
 );
 add_theme_support( 'custom-header', $args );
+
+// make the footer editable by making it a sidebar, WORDPRESS THINGS
+register_sidebar( array(
+    'name' => __( 'Footer information', 'portfolio' ),
+    'id' => 'footer-information',
+    'description' => __( 'Information for the footer', 'portfolio' ),
+    'before_widget' => '<span class="text-white">',
+    'after_widget' => '</span>'
+) );
