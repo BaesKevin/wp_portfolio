@@ -32,7 +32,7 @@
 					<div class="row nav-menu">
 						<div class="col-md-3 col-sm-3 columns">
 							<a href="index.html">
-							<img class="logo logo-dark" alt="Logo" src="<?php echo get_template_directory_uri()?>/img/logotype_dark.png">
+							<img class="logo logo-dark" alt="Logo" src="<?php header_image(); ?>">
 						</div>
 					
 						<div class="col-md-9 col-sm-9 columns text-right">

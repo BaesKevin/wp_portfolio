@@ -209,3 +209,15 @@ function portfolio_item_save_data(){
 add_action('init', 'portfolio_item_init');
 add_action('admin_init', 'portfolio_item_admin_init');
 add_action('save_post', 'portfolio_item_save_data');
+
+
+/*****************************************
+CUSTOMIZATION API: custom top left logo
+******************************************/
+
+$args = array(
+	'width'         => 200,
+	'height'        => 60,
+	'default-image' => get_template_directory_uri() . '/img/logotype_dark.png',
+);
+add_theme_support( 'custom-header', $args );
