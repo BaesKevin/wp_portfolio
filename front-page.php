@@ -142,70 +142,33 @@
 					
 					<div class="projects-container">
 					
-						<div class="col-md-6 col-sm-12 no-pad project development image-holder">
-							<div class="background-image-holder">
-								<img class="background-image" alt="Background Image" src="<?php echo get_template_directory_uri()?>/img/project_1.jpg">
-							</div>
-							<div class="hover-state">
-								<div class="align-vertical">
-									<h1 class="text-white"><strong>Project 1</strong>&nbsp;Lorem ipsum</h1>
-									<p class="text-white">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet</p>
-									<a href="#" class="btn btn-primary btn-white">See Project</a>
+						<?php
+						$args = array(
+							'post_type' => 'portfolio_item',
+							'posts_per_page' => 10
+						);
+						$the_query = new WP_Query($args);
+
+						if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+							<?php
+							global $post;
+							$portitem_custom_fields = get_post_custom($post->ID);
+							?>
+
+							<div class="col-md-6 col-sm-12 no-pad project development image-holder">
+								<div class="background-image-holder">
+									<img class="background-image" alt="<?php the_title(); ?>" src="<?php echo get_field("portfolio_item_thumbnail")["url"]; ?>">
+								</div>
+								<div class="hover-state">
+									<div class="align-vertical">
+										<h1 class="text-white"><strong><?php the_title(); ?></strong></h1>
+										<a href="<?php echo $portitem_custom_fields["portfolio_item_url"][0]; ?>" class="btn btn-primary btn-white">See Project</a>
+									</div>
 								</div>
 							</div>
-						</div>
-						
-						<div class="col-md-6 col-sm-12 no-pad project development image-holder">
-							<div class="background-image-holder">
-								<img class="background-image" alt="Background Image" src="<?php echo get_template_directory_uri()?>/img/project_2.jpg">
-							</div>
-							<div class="hover-state">
-								<div class="align-vertical">
-									<h1 class="text-white"><strong>Project 2</strong>&nbsp;Dolor sit</h1>
-									<p class="text-white">Quisquam est, qui dolorem ipsum quia dolor</p>
-									<a href="#" class="btn btn-primary btn-white">See Project</a>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-md-4 col-sm-6 no-pad project print image-holder">
-							<div class="background-image-holder">
-								<img class="background-image" alt="Background Image" src="<?php echo get_template_directory_uri()?>/img/project_3.jpg">
-							</div>
-							<div class="hover-state">
-								<div class="align-vertical">
-									<h1 class="text-white"><span>Project 3&nbsp;</span>Sit amet</h1>
-									<p class="text-white">Incidunt labore dolore magnam aliquam quaerat voluptatem</p>
-									<a href="#" class="btn btn-primary btn-white">See Project</a>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-md-4 col-sm-6 no-pad project branding image-holder">
-							<div class="background-image-holder">
-								<img class="background-image" alt="Background Image" src="<?php echo get_template_directory_uri()?>/img/project_4.jpg">
-							</div>
-							<div class="hover-state">
-								<div class="align-vertical">
-									<h1 class="text-white"><strong>Project 4</strong>&nbsp;Lorem dolor</h1>
-									<p class="text-white">Labore et dolore magnam aliquam quaerat</p>
-									<a href="#" class="btn btn-primary btn-white">See Project</a>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-md-4 col-sm-6 no-pad project print image-holder">
-							<div class="background-image-holder">
-								<img class="background-image" alt="Background Image" src="<?php echo get_template_directory_uri()?>/img/project_5.jpg">
-							</div>
-							<div class="hover-state">
-								<div class="align-vertical">
-									<h1 class="text-white"><span>Project 5&nbsp;</span>Dolor sit amet</h1>
-									<p class="text-white">Dolore magnam aliquam quaerat</p>
-									<a href="#" class="btn btn-primary btn-white">See Project</a>
-								</div>
-							</div>
-						</div>
+						<?php endwhile; else : ?>
+							<p><?php esc_html_e('You didn\'t add any projects yet. You can start adding projects in the wordpress admin console.'); ?></p>
+						<?php endif; ?>
 					
 					</div>
 					
